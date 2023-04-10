@@ -4,7 +4,8 @@ from Mobilia import Mobilia
 
 
 class Imovel:
-    def __init__(self, codigo: int, descricao: str, valor: float, locador: Locador):
+    def __init__(self, codigo: int, descricao: str, valor: float, locador:
+                 Locador):
         self.__codigo = codigo
         self.__descricao = descricao
         self.__valor = valor
@@ -15,6 +16,7 @@ class Imovel:
     @property
     def codigo(self):
         return self.__codigo
+
     @codigo.setter
     def codigo(self, codigo: int):
         self.__codigo = codigo
@@ -22,6 +24,7 @@ class Imovel:
     @property
     def descricao(self):
         return self.__descricao
+
     @descricao.setter
     def descricao(self, descricao: str):
         self.__descricao = descricao
@@ -29,6 +32,7 @@ class Imovel:
     @property
     def valor(self):
         return self.__valor
+
     @valor.setter
     def valor(self, valor: float):
         self.__valor = valor
@@ -36,18 +40,19 @@ class Imovel:
     @property
     def locador(self):
         return self.__locador
+
     @locador.setter
     def locador(self, locador: Locador):
         self.__locador = locador
-    
+
     @property
     def locatarios(self):
         return self.__locatarios
-    
+
     @property
     def mobilias(self):
         return self.__mobilias
-    
+
     def incluir_locatario(self, locatario: Locatario):
         loc_ex = False
         if isinstance(locatario, Locatario):
@@ -55,7 +60,7 @@ class Imovel:
                 if loc.codigo == locatario.codigo:
                     loc_ex = True
                     print('locatario já incluso')
-            if loc_ex == False:
+            if not loc_ex:
                 self.__locatarios.append(locatario)
                 print('incluiu o locatario!')
         else:
@@ -69,32 +74,32 @@ class Imovel:
                     loc_ex = True
                     self.__locatarios.remove(loc)
                     print('locatario removido!')
-            if loc_ex == False:
+            if not loc_ex:
                 print('Locatario não existe')
         else:
             print("error")
 
-    def incluir_mobilia(self,codigo_mobilia: int, descricao_mobilia: str):
+    def incluir_mobilia(self, codigo_mobilia: int, descricao_mobilia: str):
         mob_dup = False
         for mob in self.__mobilias:
             if mob.codigo == codigo_mobilia:
                 mob_dup = True
                 print("Mobilia já atribuida")
                 break
-        if mob_dup == False:
+        if not mob_dup:
             self.__mobilias.append(Mobilia(codigo_mobilia, descricao_mobilia))
-            print('incluído!')    
+            print('incluído!')
 
-    def excluir_mobilia(self,codigo_mobilia: int):
+    def excluir_mobilia(self, codigo_mobilia: int):
         mob_ex = False
         for mob in self.__mobilias:
             if mob.codigo == codigo_mobilia:
                 mob_ex = True
                 self.__mobilias.remove(mob)
                 print('Excluído!')
-        if mob_ex == False:
+        if not mob_ex:
             print('Mobilia não existe!')
-    
+
     def find_locatario_by_codigo(self, codigo_locatario: int):
         loc_ex = False
         for loc in self.locatarios:
@@ -102,5 +107,5 @@ class Imovel:
                 loc_ex = True
                 return Locatario.nome
                 break
-        if loc_ex == False:
+        if not loc_ex:
                 print("Não existe locatario com esse codigo")
