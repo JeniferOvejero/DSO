@@ -105,7 +105,7 @@ class Imovel:
         for loc in self.locatarios:
             if loc.codigo == codigo_locatario:
                 loc_ex = True
-                return Locatario.nome
+                return loc
                 break
         if not loc_ex:
                 print("Não existe locatario com esse codigo")
