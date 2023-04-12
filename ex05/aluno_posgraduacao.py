@@ -1,7 +1,7 @@
 from aluno import Aluno
 
 
-class AlunoPosGraduancao(Aluno):
+class AlunoPosGraduacao(Aluno):
     def __init__(self, cpf: int, dias_de_emprestimo: int, matricula: int):
         super().__init__(matricula, cpf, dias_de_emprestimo)
         self.__elaborando_tese = False
