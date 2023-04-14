@@ -1,8 +1,8 @@
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from usuario_bu import UsuarioBU
 
 
-class Aluno(UsuarioBU):
+class Aluno(UsuarioBU, ABC):
     @abstractmethod
     def __init__(self, cpf: int, dias_de_emprestimo: int, matricula: int):
         super().__init__(cpf, dias_de_emprestimo)
