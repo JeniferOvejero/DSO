@@ -6,22 +6,26 @@ from onibusJahDesligadoException import OnibusJahDesligadoException
 
 
 class Onibus(AbstractOnibus):
+
     def __init__(self, capacidade: int, total_passageiros: int, ligado: bool):
-        super().__init__( capacidade, total_passageiros, ligado)
+        super().__init__(capacidade, total_passageiros, ligado)
+        self.__capacidade = capacidade
+        self.__total_passageiros = total_passageiros
+        self.__ligado = ligado
 
     # OnibusJahLigadoException
     def ligar(self) -> str:
-        if self.ligado:
+        if self.__ligado:
             raise OnibusJahLigadoException()
         else:
-            self.ligado = True
+            self.__ligado = True
 
     # OnibusJahDesligadoException
     def desligar(self) -> str:
-        if not self.ligado(self):
+        if not self.__ligado:
             raise OnibusJahDesligadoException
         else:
-            self.ligado = False
+            self.__ligado = False
 
     # OnibusJahCheioException
     def embarca_pessoa(self) -> str:
@@ -52,5 +56,3 @@ class Onibus(AbstractOnibus):
     @capacidade.setter
     def capacidade(self, capacidade: int):
         self.__capacidade = capacidade
-
-
