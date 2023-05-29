@@ -31,7 +31,7 @@ class ControladorCampeonato():
             except Exception:
                 print("error")
         else:
-            return JogoDuplicadoException()
+            raise JogoDuplicadoException()
 
     def remove_jogo(self, numero):
         if numero in [j.numero for j in self.jogos]:
